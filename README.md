@@ -52,3 +52,14 @@ Bolt.new supports most popular JavaScript frameworks and libraries. If it runs o
 
 **How can I add make sure my framework/project works well in bolt?**  
 We are excited to work with the JavaScript ecosystem to improve functionality in Bolt. Reach out to us via [hello@stackblitz.com](mailto:hello@stackblitz.com) to discuss how we can partner!
+
+
+## AI provider configuration
+
+Prometheus supports three server-side AI providers. Configure the desired provider and its key as deployment secrets:
+
+- Google Gemini: `AI_PROVIDER=google`, `GOOGLE_GENERATIVE_AI_API_KEY`, optional `AI_MODEL` (default `gemini-1.5-flash`)
+- OpenRouter: `AI_PROVIDER=openrouter`, `OPENROUTER_API_KEY`, optional `AI_MODEL` (default `google/gemini-2.0-flash-001`)
+- Anthropic: `AI_PROVIDER=anthropic`, `ANTHROPIC_API_KEY`, optional `AI_MODEL` (default `claude-3-5-sonnet-20240620`)
+
+If `AI_PROVIDER` is omitted, the app chooses Google when a Google key is configured, then OpenRouter when its key is configured, otherwise Anthropic. Keep provider keys in deployment secrets; never commit them to the repository.
